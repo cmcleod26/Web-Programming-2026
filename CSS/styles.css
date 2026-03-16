@@ -1,0 +1,76 @@
+:root {
+  /* colors — two extra hex digits at the end set the opacity */
+  --color-toolbar:      #393E41;        /* FF = 100% */
+  --color-root-folders: #FE5F5580;      /* BF = 75%  */
+  --color-folders:      #7D80DA80;      /* 80 = 50%  */
+  --color-files:        #7494EA80;      /* 40 = 25%  */
+  --color-note-pad:     #F5F5F5;        /* 00 = 0%   */
+  
+  /* column widths */
+  --width-root-folders: 100px;
+  --width-folders:      150px;
+  --width-files:        200px;
+
+  /* note-pad border */
+  --notepad-border-width: 3px;
+  --notepad-border-color: #EBEBEB; 
+  --notepad-border-style: solid;
+
+
+  /* layout */
+  --column-padding: 12px;
+  --column-radius:  6px;
+  --grid-gap:       8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: var(--width-root-folders) var(--width-folders) var(--width-files) 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  gap: var(--grid-gap);
+  padding: var(--grid-gap);
+}
+
+#tool-bar {
+  grid-column: 1 / -1;
+  background-color: var(--color-toolbar);
+  border-radius: var(--column-radius);
+  padding: var(--column-padding);
+  color: white;
+}
+
+#root-folders {
+  background-color: var(--color-root-folders);
+  border-radius: var(--column-radius);
+  padding: var(--column-padding);
+}
+
+#folders {
+  background-color: var(--color-folders);
+  border-radius: var(--column-radius);
+  padding: var(--column-padding);
+}
+
+#files {
+  background-color: var(--color-files);
+  border-radius: var(--column-radius);
+  padding: var(--column-padding);
+}
+
+#note-pad {
+  background-color: var(--color-note-pad);
+  border-radius: var(--column-radius);
+  padding: var(--column-padding);
+  border: var(--notepad-border-width) var(--notepad-border-style) var(--notepad-border-color);
+}
