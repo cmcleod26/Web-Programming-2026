@@ -1,6 +1,29 @@
 ## Project code for csc324
 
-Change - I have now made a change to the change (Connor)
+3/17/2026
+added 4 packages
+to install these on your machine:
+First: make sure you have Node.js installed. You will be using npm which is the package manager.
+
+Also you can run 'npm -v' to see if Node.js is installed
+
+Second: just run 'npm install', this will read teh package.json folder and install the correct stuff
+
+(Just ignore package-lock.json) It's like boring package semantics I think
+
+It will say it installed 85 things, these are the 4 packages and their dependencies
 
 
-Change - I too have made a change (Isabel)
+Also, you will see a folder called node_modules. You can basically ignore this. This alongside .env will not be pushed to git
+
+
+
+1. Express - This is our server, it will handle incoming http requests like retrieving folders and such.
+
+We need to write handlers like app.get() and app.post() to define what happens for each request
+
+2. mongoose - This is the bridge to Mongo. Instead of queries we define a schema and a model which gives us methods to read and write data. This way instead of writing queries we can just write Folder.find()
+
+3. dotenv - this just makes it so that when the server starts it reads your .env file and loads everything into process.env. This way our code can handle sensitive information like the Mongo URI without us hardcoding them
+
+4. cors - ai explanation: "stands for Cross Origin Resource Sharing. Browsers have a security rule that blocks a webpage from making requests to a different domain than the one it came from. Since your React frontend and Express backend run on different ports locally, the browser would block their communication without this. cors tells the browser "this is allowed."
