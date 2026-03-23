@@ -9,7 +9,7 @@ const Folder = require('../models/FolderSchema')
 
 router.get('/:owner', async (req, res) => {
     try {
-        const folders = await Folder.find({ owner: req.params.owner})
+        const folders = await Folder.find({ owner: req.params.owner});
         res.json(folders);
     } catch (error){
         res.status(500).json({ message: error.message});
