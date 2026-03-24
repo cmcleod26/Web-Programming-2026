@@ -20,14 +20,13 @@ Updated: 3/24/2026
 -------------------------------------------------------------------------------------------------
 3/24/2026
 API Examples: (We can also C+P these later)
-// get all folders for a user
-async function getFolders(owner) {
-
-    const response = await fetch(`http://localhost:5000/api/folders/${owner}`);
-    const folders = await response.json();
-    console.log(folders);
-    return folders;
-}
+      // get all folders for a user
+      async function getFolders(owner) {
+          const response = await fetch(`http://localhost:5000/api/folders/${owner}`);
+          const folders = await response.json();
+          console.log(folders);
+          return folders;
+      }
 -------------------------------------------------------------------------------------------------
 3/17/2026
 added 4 packages
