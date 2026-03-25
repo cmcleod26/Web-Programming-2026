@@ -18,7 +18,7 @@ Updated: 3/24/2026
 - [ ] Deploy Express backend to Render
 - [ ] Deploy React frontend to GitHub Pages
 -------------------------------------------------------------------------------------------------
-3/24/2026
+# 3/24/2026
 API Examples: (We can also C+P these later)
 // get all folders for a user
 ```ruby
@@ -30,8 +30,8 @@ async function getFolders(owner) {
 }
 ```
 -------------------------------------------------------------------------------------------------
-3/17/2026
-added 4 packages
+# 3/17/2026
+### added 4 packages
 to install these on your machine:
 First: make sure you have Node.js installed. You will be using npm which is the package manager.
 
@@ -45,7 +45,6 @@ It will say it installed 85 things, these are the 4 packages and their dependenc
 
 
 Also, you will see a folder called node_modules. You can basically ignore this. This alongside .env will not be pushed to git
-
 
 
 1. Express - This is our server, it will handle incoming http requests like retrieving folders and such.
