@@ -1,4 +1,4 @@
-## Project code for csc324 (Trifolio)
+## Project code for csc324 (Trifolio) .
 -------------------------------------------------------------------------------------------------
 Updated: 3/24/2026
 ## To Do
