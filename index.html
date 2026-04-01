@@ -3,18 +3,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="personal folders with notes WOW"
-    <title> TBD </title>
+    <title> Diamond Folders </title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <script type="module">
+            import setupAddFolder from "./js/CreateFolders.js";
+            setupAddFolder();
+            //import createItems from "./js/createItems.js";
+            //createItems();
+        </script>
 </head>
-<body>
+
     <body>
-    <div id="app">
-        <div id="tool-bar">#tool-bar</div>
-        <div id="root-folders">#root-folders</div>
-        <div id="folders">#folders</div>
-        <div id="files">#files</div>
-        <div id="note-pad">#note-pad</div>
-    </div>
-</body>
-</body>
+        <div id="app">
+            <div id="tool-bar">
+                <button id="create-folder">New Folder</button>
+            </div>
+            <div id="root-folders">#root-folders</div>
+            <div id="folders">#folders</div>
+            <div id="files">#files</div>
+            <div id="note-pad">#note-pad</div>
+        </div>
+        
+    </body>
+
 </html>
