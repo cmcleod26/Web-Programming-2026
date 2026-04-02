@@ -11,6 +11,8 @@
             setupAddFolder();
             //import createItems from "./js/createItems.js";
             //createItems();
+            import setupFolderToggles from "./js/toggleFolders.js";
+            setupFolderToggles();
         </script>
 </head>
 
@@ -19,9 +21,19 @@
             <div id="tool-bar">
                 <button id="create-folder">New Folder</button>
             </div>
-            <div id="root-folders">#root-folders</div>
-            <div id="folders">#folders</div>
-            <div id="files">#files</div>
+            <div id="root-folders">#root-folders
+                <button id="folder-show">Show Folder</button>
+            </div>
+
+            <div id="folders">#folders
+                <button id="folder-btn">Hide</button>
+                <button id="file-show">show files</button>
+            </div>
+                
+            <div id="files">#files
+                <button id="file-btn">Hide</button>
+            </div>
+
             <div id="note-pad">#note-pad</div>
         </div>
         
