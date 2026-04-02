@@ -1,7 +1,10 @@
 class folder{
 
-    constructor(PassedFolderName) {
+    constructor( PassedFolderName, Manager) {
        this.folderName = PassedFolderName;
+       this.files = [];
+       this.manager = Manager
+       this.folderbtn = null;
     }
 
 
@@ -9,12 +12,20 @@ class folder{
         //creating folder div
         const folderDiv = document.createElement('div');
         folderDiv.className = 'folder' + this.folderName;
-        const folderbtn = document.createElement('button');
+        
 
         //creating the button for the folder
-        folderbtn.className = 'folder-btn';
-        folderbtn.innerText = this.folderName;
-        folderDiv.appendChild(folderbtn);
+        this.folderbtn = document.createElement('button');
+        this.folderbtn.className = 'folder-btn';
+        this.folderbtn.innerText = this.folderName;
+        //add event listener to set slected folder when button is clicked
+        this.folderbtn.addEventListener('click', () => {
+            this.manager.setSelectedFolder(this);
+        })
+        //manually set selected folder on created just this once
+        this.manager.setSelectedFolder(this);
+
+        folderDiv.appendChild(this.folderbtn);
 
         document.querySelector('#folders').appendChild(folderDiv);
 
@@ -22,22 +33,26 @@ class folder{
     
 }
 
-function createFolderHandler(event) {
+function createFolderHandler(event, manager) {
     event.preventDefault();
 
     // Prompt the user to name the folder
     const folderName = prompt('Enter folder name:');
+    folderName.trim();
 
     // Only create if they typed something
-    if (folderName && folderName.trim() !== '') {
-        const newFolder = new folder(folderName.trim());
+    if (folderName !== '' && folderName) {
+        const newFolder = new folder(folderName, manager);
         newFolder.createFolderInHTML();
+        manager.folders.push(newFolder);
     }
 }
 
-function setupAddFolder() {
+function setupAddFolder(manager) {
     const createBtn = document.querySelector('#create-folder'); 
-    createBtn.addEventListener('click', createFolderHandler);
+    createBtn.addEventListener('click', function (event) {
+        createFolderHandler(event, manager);
+    });
 }
 
 export default setupAddFolder;
