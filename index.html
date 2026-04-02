@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <script type="module">
-            import setupAddFolder from "./js/CreateFolders.js";
-            setupAddFolder();
+            import "./js/stateManager.js";
+            
             //import createItems from "./js/createItems.js";
             //createItems();
             import setupFolderToggles from "./js/toggleFolders.js";
@@ -20,6 +20,7 @@
         <div id="app">
             <div id="tool-bar">
                 <button id="create-folder">New Folder</button>
+                <button id="create-file">New File</button>
             </div>
             <div id="root-folders">#root-folders
                 <button id="folder-show">Show Folder</button>
