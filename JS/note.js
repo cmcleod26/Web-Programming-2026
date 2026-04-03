@@ -1,4 +1,3 @@
-import { set } from "mongoose";
 
 class NotePad {
     constructor() {

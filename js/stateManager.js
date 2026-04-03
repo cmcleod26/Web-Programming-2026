@@ -1,19 +1,29 @@
 import setupAddFolder from "./CreateFolders.js";
 import setupAddFile from "./createFile.js";
+import setupRoots from "./setupRoots.js";
 
 class stateManager {
     constructor() {
+        this.roots = [];
+        this.selectedRoot = null;
+
         this.folders = [];
         this.selectedFolder = null;
 
         this.files = [];
         this.selectedFile = null;
 
+        //setup root folders
+        setupRoots(this);
+
         //addes the event lister to the create folder button
         setupAddFolder(this);
 
         //adds the event listener to the create file button and passes the manager to it.
         setupAddFile(this);
+
+        
+
     }
 
     setSelectedFolder(passedFolder) {
@@ -39,6 +49,16 @@ class stateManager {
         if (this.selectedFolder) {
             //add the selected class to the button of the folder so it can be styled differently when selected
             this.selectedFile.filebtn.classList.add("selected");
+        }
+    }
+
+    setSelectedRoot(passedRoot){
+        if (this.selectedRoot) {
+            this.selectedRoot.rootbtn.classList.remove('selected');
+        }
+        this.selectedRoot = passedRoot;
+        if (this.selectedRoot) {
+            this.selectedRoot.rootbtn.classList.add('selected');
         }
     }
 

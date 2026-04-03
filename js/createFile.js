@@ -4,6 +4,7 @@ class FileItem {
         this.folder = folder;
         this.manager = manager;
         this.filebtn = null;
+        this.rootFolder = this.folder.rootFolder;
     }
 
     createFileInHTML() {
@@ -30,20 +31,23 @@ function createFileHandler(event, manager) {
     event.preventDefault();
 
     if (!manager.selectedFolder) {
-    alert("Select a folder first");
-    return;
+        alert("Select a folder first");
+        return;
     }
 
-    const fileName = prompt("Enter file name");
+    const fileName = prompt("Creating file in " + manager.selectedFolder.folderName + ". Enter file name:");
     fileName.trim();
     
     //only create if they typed something;
     if (fileName !== '' && fileName) { 
+        
         const newFile = new FileItem(fileName.trim(), manager.selectedFolder, manager);
         newFile.createFileInHTML();
 
         manager.files.push(newFile);
         manager.selectedFolder.files.push(newFile);
+    }else{
+        alert("Enter a name to create a file");
     }
 }
 

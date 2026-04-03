@@ -5,6 +5,7 @@ class folder{
        this.files = [];
        this.manager = Manager
        this.folderbtn = null;
+       this.rootfolder = Manager.selectedRoot;
     }
 
 
@@ -36,15 +37,26 @@ class folder{
 function createFolderHandler(event, manager) {
     event.preventDefault();
 
+    // Stop user before entering if they haven't selected a root folder.
+    if (!manager.selectedRoot) {
+        alert("Select a root folder first");
+        return;
+    }
+
     // Prompt the user to name the folder
-    const folderName = prompt('Enter folder name:');
+    const folderName = prompt('Creating folder in ' + manager.selectedRoot.rootName + '. Enter folder name:');
     folderName.trim();
 
     // Only create if they typed something
-    if (folderName !== '' && folderName) {
+    if (folderName !== '' && folderName && manager.selectedRoot !== null) {
+
         const newFolder = new folder(folderName, manager);
         newFolder.createFolderInHTML();
         manager.folders.push(newFolder);
+        manager.selectedRoot.folders.push(newFolder);
+
+    }else{
+        alert("Enter a name to create a folder");
     }
 }
 
