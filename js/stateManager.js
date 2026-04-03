@@ -1,6 +1,8 @@
 import setupAddFolder from "./CreateFolders.js";
 import setupAddFile from "./createFile.js";
 import setupRoots from "./setupRoots.js";
+//import setupFolderToggles from "./js/toggleFolders.js";
+
 
 class stateManager {
     constructor() {
@@ -22,9 +24,11 @@ class stateManager {
         //adds the event listener to the create file button and passes the manager to it.
         setupAddFile(this);
 
-        
+        // Folder toggle wiring is handled from index.js via setupFolderToggles().
+        // setupFolderToggles();
 
     }
+
 
     setSelectedFolder(passedFolder) {
         if (this.selectedFolder) {
