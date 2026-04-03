@@ -34,16 +34,24 @@ body {
 }
 
 #app {
-  display: grid;
+  /* display: grid;
   grid-template-columns: var(--width-root-folders) var(--width-folders) var(--width-files) 1fr;
   grid-template-rows: auto 1fr;
+  height: 100vh;
+  gap: var(--grid-gap);
+  padding: var(--grid-gap); */
+  display: flex;
+  flex-direction: row;
   height: 100vh;
   gap: var(--grid-gap);
   padding: var(--grid-gap);
 }
 
+
+
+
 #tool-bar {
-  grid-column: 1 / -1;
+  /* grid-column: 1 / -1; */
   background-color: var(--color-toolbar);
   border-radius: var(--column-radius);
   padding: var(--column-padding);
@@ -51,26 +59,99 @@ body {
 }
 
 #root-folders {
-  background-color: var(--color-root-folders);
+  width: var(--width-root-folders);
+  background-color: var(--color-root-folders); 
   border-radius: var(--column-radius);
   padding: var(--column-padding);
 }
 
 #folders {
+
+  width: var(--width-folders);
   background-color: var(--color-folders);
   border-radius: var(--column-radius);
   padding: var(--column-padding);
 }
 
+#folderB {
+display: flex;
+flex-direction: row; 
+gap: 6px;
+}
+
+#file-btn {
+display: flex;
+flex-direction: column; 
+gap: 6px;
+}
+
 #files {
+
+
+  width: var(--width-files);
   background-color: var(--color-files);
   border-radius: var(--column-radius);
   padding: var(--column-padding);
 }
 
 #note-pad {
+  flex: 1;
   background-color: var(--color-note-pad);
   border-radius: var(--column-radius);
   padding: var(--column-padding);
   border: var(--notepad-border-width) var(--notepad-border-style) var(--notepad-border-color);
+}
+
+
+
+
+/* BUTTONS */
+
+#tool-bar button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #73797d;
+  text-decoration-color: black;  
+  cursor: pointer;
+}
+
+#root-folders button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff675d80;;
+  text-decoration-color: black;  
+  cursor: pointer;
+}
+
+#folders button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #7d80daca;
+  text-decoration-color: black;  
+  cursor: pointer;
+}
+
+#files button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #7494eacd;
+  text-decoration-color: black;  
+  cursor: pointer; 
+}
+
+#note-pad button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d0cdcd;
+  text-decoration-color: black;  
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
 }

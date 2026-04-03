@@ -16,13 +16,13 @@ class FolderToggle {
             }    
         }
 
-        //updateLayout();
+        updateLayout();
     }
 
     show() {
         this.folder.style.display = 'block';
         this.showButton.innerText = 'show';
-        //updateLayout();
+        updateLayout();
     }
 
     setup() {
@@ -36,26 +36,26 @@ class FolderToggle {
     
 }
 
-// function updateLayout() {
-//     const folders = document.getElementById('folders');
-//     const files = document.getElementById('files');
-//     const rootFolder = document.getElementById('root-folders');
+function updateLayout() {
+    const folders = document.getElementById('folders');
+    const files = document.getElementById('files');
+    const root = document.getElementById('root-folders');
 
-//     const folderHidden = folders.style.display === 'none';
-//     const fileHidden = files.style.display === 'none';
+    const folderHidden = folders.style.display === 'none';
+    const fileHidden = files.style.display === 'none';
 
-//     if (folderHidden) {
-//         rootFolder.style.width = '300px';
-//     } else {
-//         rootFolder.style.width = '200px';
-//     }
+    if (fileHidden == true) {
+        root.style.width = '225px';
+        folders.style.width = '225px';
+    }  else if (folderHidden == true ) {
+        root.style.width = '225px';
+    } else {
+        root.style.width = 'var(--width-root-folders)';
+        folders.style.width = 'var(--width-folders)';
+        files.style.width = 'var(--width-files)';
+    }
 
-//     if (!folderHidden && fileHidden) {
-//         folders.style.width = '400px';
-//     } else if (!folderHidden && !fileHidden) {
-//         folders.style.width = '200px';
-//     }
-// }
+}
 
 function setupFolderToggles() {
     const folders = new FolderToggle('folders', 'folder-btn', 'folder-show');

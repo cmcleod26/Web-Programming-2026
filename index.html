@@ -13,29 +13,54 @@
             //createItems();
             import setupFolderToggles from "./js/toggleFolders.js";
             setupFolderToggles();
+
+            import setupNotepad from "./js/note.js";
+            setupNotepad();
         </script>
 </head>
 
     <body>
-        <div id="app">
-            <div id="tool-bar">
+
+        <div id="tool-bar">
                 <button id="create-folder">New Folder</button>
                 <button id="create-file">New File</button>
             </div>
-            <div id="root-folders">#root-folders
-                <button id="folder-show">Show Folder</button>
-            </div>
+        <div id="app">
+            
 
-            <div id="folders">#folders
-                <button id="folder-btn">Hide</button>
-                <button id="file-show">show files</button>
-            </div>
+
+                <div id="root-folders">#root-folders
+                    <button id="folder-show">Show</button>
+                </div>
+
+                <div id="folders">#folders
+                    <div id="folderB">
+                        <button id="folder-btn">Hide</button>
+                        <button id="file-show">Show</button>
+                    </div>
+                </div>
                 
-            <div id="files">#files
-                <button id="file-btn">Hide</button>
-            </div>
+                <div id="files">#files
+                    <button id="file-btn">Hide</button>
+                </div>
 
-            <div id="note-pad">#note-pad</div>
+                <div id="note-pad">#note-pad
+
+                        
+
+                    <button id="edit-note-btn">Edit</button>
+                    <button id="save-note-btn">Save</button>
+
+                    <p id="note-text">Type your notes here...</p>
+
+                    <div id="note-editor" style="display: none;">
+                        <textarea id="note-area" rows="33" cols="112"></textarea>
+                                
+                    </div>
+                    
+                </div>
+
+
         </div>
         
     </body>
