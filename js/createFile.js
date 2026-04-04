@@ -10,7 +10,7 @@ class FileItem {
     createFileInHTML() {
         const fileDiv = document.createElement("div");
         fileDiv.className = "file";
-
+        //create the button for the file
         this.filebtn = document.createElement("button");
         this.filebtn.className = "file-btn";
         this.filebtn.innerText = this.fileName;
@@ -29,7 +29,7 @@ class FileItem {
 
 function createFileHandler(event, manager) {
     event.preventDefault();
-
+    //Must select a folder before creating a file
     if (!manager.selectedFolder) {
         alert("Select a folder first");
         return;

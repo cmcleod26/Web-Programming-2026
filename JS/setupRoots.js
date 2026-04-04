@@ -11,11 +11,11 @@ class RootFolder {
     createRootInHTML() {
         const rootDiv = document.createElement('div');
         rootDiv.className = 'root-' + this.rootName;
-
+        //create the button for the root folder
         this.rootbtn = document.createElement('button');
         this.rootbtn.className = 'root-btn';
         this.rootbtn.innerText = this.rootName;
-
+        //add event listener to set selected root when button is clicked
         this.rootbtn.addEventListener('click', () => {
             this.manager.setSelectedRoot(this);
         });
@@ -27,7 +27,7 @@ class RootFolder {
 
 function setupRoots(manager) {
     const hardcodedRoots = ['Connor', 'Isabel', 'Cody'];
-
+    // Create root folders from the hardcoded list and add them to the manager
     hardcodedRoots.forEach(name => {
         const newRoot = new RootFolder(name, manager);
         newRoot.createRootInHTML();
