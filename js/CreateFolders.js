@@ -5,6 +5,7 @@ class folder{
        this.files = [];
        this.manager = Manager
        this.folderbtn = null;
+       this.folderDiv = null;
        this.rootfolder = Manager.selectedRoot;
     }
 
@@ -13,6 +14,7 @@ class folder{
         //creating folder div
         const folderDiv = document.createElement('div');
         folderDiv.className = 'folder' + this.folderName;
+        this.folderDiv = folderDiv
         
 
         //creating the button for the folder

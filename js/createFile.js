@@ -4,12 +4,14 @@ class FileItem {
         this.folder = folder;
         this.manager = manager;
         this.filebtn = null;
+        this.fileDiv = null;
         this.rootFolder = this.folder.rootFolder;
     }
 
     createFileInHTML() {
         const fileDiv = document.createElement("div");
         fileDiv.className = "file";
+        this.fileDiv = fileDiv;
         //create the button for the file
         this.filebtn = document.createElement("button");
         this.filebtn.className = "file-btn";

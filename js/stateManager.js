@@ -41,6 +41,11 @@ class stateManager {
             //add the selected class to the button of the folder so it can be styled differently when selected
             this.selectedFolder.folderbtn.classList.add("selected");
         }  
+        // Show only this folder's files, hide everything else
+        this.files.forEach(f => f.fileDiv.style.display = 'none');
+        if (passedFolder) {
+            passedFolder.files.forEach(f => f.fileDiv.style.display = 'block');
+        }
     }
 
     setSelectedFile(passedFile){
@@ -64,6 +69,15 @@ class stateManager {
         if (this.selectedRoot) {
             this.selectedRoot.rootbtn.classList.add('selected');
         }
+        // Show only this root's folders, hide everything else
+        this.folders.forEach(f => f.folderDiv.style.display = 'none');
+        if (passedRoot) {
+            passedRoot.folders.forEach(f => f.folderDiv.style.display = 'block');
+        }
+
+        // Switching roots clears the file view too
+        this.files.forEach(f => f.fileDiv.style.display = 'none');
+        this.selectedFolder = null;
     }
 
 
