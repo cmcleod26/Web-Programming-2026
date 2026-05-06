@@ -152,6 +152,10 @@ gap: 6px;
     color: white;
 }
 
+#tool-bar #delete-folder {
+    background-color: red;
+}
+
 #files button {
   padding: 6px 10px;
   border: none;

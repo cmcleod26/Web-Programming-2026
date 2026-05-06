@@ -45,7 +45,7 @@ router.delete('/:id', async(req, res) =>{
             return res.status(404).json({message: 'Folder not found'});
         }
 
-        res.json({message: 'Folder deleted'});
+        res.status(201).json({message: 'Folder deleted'});
     } catch (error) {
         res.status(500).json({message: error.message});
     }
