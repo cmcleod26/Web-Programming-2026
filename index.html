@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="personal folders with notes WOW"
+    <meta name="description" content="personal folders with notes WOW">
     <title> Diamond Folders </title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 
     <script type="module">
             import "./js/stateManager.js";
@@ -14,7 +14,7 @@
             import setupFolderToggles from "./js/toggleFolders.js";
             setupFolderToggles();
 
-            import setupNotepad from "./js/note.js";
+            import setupNotepad from "./JS/note.js";
             setupNotepad();
         </script>
 </head>
@@ -23,9 +23,15 @@
     <body>
 
         <div id="tool-bar">
+            <div id="create">
                 <button id="create-folder">New Folder</button>
                 <button id="create-file">New File</button>
             </div>
+            <div id="note-buttons">
+                <button id="edit-note-btn">Edit</button>
+                <button id="save-note-btn">Save</button>
+            </div>
+        </div>
         <div id="app">
             
 
@@ -46,22 +52,21 @@
 
                 </div>
 
-                <div id="note-pad">#note-pad
 
-                        
+                    <div id="note-pad">
 
-                    <button id="edit-note-btn">Edit</button>
-                    <button id="save-note-btn">Save</button>
+                        <div id="note-text">
+                            <div>
+                                <p>No File Selected </p>
+                            </div>
+                        </div>
 
-                    <p id="note-text">Type your notes here...</p>
-
-                    <div id="note-editor" style="display: none;">
-                        <textarea id="note-area" rows="33" cols="112"></textarea>
+                            <div id="note-editor" style="display: none;">
+                                <textarea id="note-area" rows="33" cols="112"></textarea>
                                 
-                    </div>
+                            </div>
                     
-                </div>
-
+                    </div>
 
         </div>
         
