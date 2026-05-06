@@ -1,8 +1,7 @@
 import setupAddFolder from "./CreateFolders.js";
 import setupAddFile from "./createFile.js";
 import setupRoots from "./setupRoots.js";
-//import setupFolderToggles from "./js/toggleFolders.js";
-
+import loadAllFolders from "./loadFolders.js";
 
 class stateManager {
     constructor() {
@@ -18,17 +17,15 @@ class stateManager {
         //setup root folders
         setupRoots(this);
 
+        //load all folders from the database on startup
+        loadAllFolders(this);
+
         //addes the event lister to the create folder button
         setupAddFolder(this);
 
         //adds the event listener to the create file button and passes the manager to it.
         setupAddFile(this);
-
-        // Folder toggle wiring is handled from index.js via setupFolderToggles().
-        // setupFolderToggles();
-
     }
-
 
     setSelectedFolder(passedFolder) {
         if (this.selectedFolder) {
@@ -40,7 +37,9 @@ class stateManager {
         if (this.selectedFolder) {
             //add the selected class to the button of the folder so it can be styled differently when selected
             this.selectedFolder.folderbtn.classList.add("selected");
-        }  
+        
+        }
+
         // Show only this folder's files, hide everything else
         this.files.forEach(f => f.fileDiv.style.display = 'none');
         if (passedFolder) {
@@ -48,7 +47,7 @@ class stateManager {
         }
     }
 
-    setSelectedFile(passedFile){
+    setSelectedFile(passedFile) {
         if (this.selectedFile) {
             this.selectedFile.filebtn.classList.remove("selected");
         }
@@ -61,14 +60,19 @@ class stateManager {
         }
     }
 
-    setSelectedRoot(passedRoot){
+    setSelectedRoot(passedRoot) {
         if (this.selectedRoot) {
+            //remove the selected class from the button of the root so it can be styled differently when not selected
             this.selectedRoot.rootbtn.classList.remove('selected');
         }
+
         this.selectedRoot = passedRoot;
+        
+        //add the selected class to the button of the root so it can be styled differently when selected
         if (this.selectedRoot) {
             this.selectedRoot.rootbtn.classList.add('selected');
         }
+
         // Show only this root's folders, hide everything else
         this.folders.forEach(f => f.folderDiv.style.display = 'none');
         if (passedRoot) {
@@ -79,8 +83,6 @@ class stateManager {
         this.files.forEach(f => f.fileDiv.style.display = 'none');
         this.selectedFolder = null;
     }
-
-
 }
 
 new stateManager();
