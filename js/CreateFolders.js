@@ -24,7 +24,7 @@ async function createFolderHandler(event, manager) {
         });
         const data = await response.json();
 
-        if(response.status !== 200) {
+        if(response.status !== 201) {
             alert("Incorrect password");
             return;
         }
