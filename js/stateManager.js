@@ -2,6 +2,7 @@ import setupAddFolder from "./CreateFolders.js";
 import setupAddFile from "./createFile.js";
 import setupRoots from "./setupRoots.js";
 //import setupFolderToggles from "./js/toggleFolders.js";
+import setupNotepad from "./note.js";
 
 
 class stateManager {
@@ -27,6 +28,7 @@ class stateManager {
         // Folder toggle wiring is handled from index.js via setupFolderToggles().
         // setupFolderToggles();
 
+        setupNotepad(this);
     }
 
 
@@ -55,9 +57,25 @@ class stateManager {
 
         this.selectedFile = passedFile;
 
+        const noteText = document.getElementById("note-text");
+        if(noteText.textContent.includes("No File Selected")) {
+
+            noteText.textContent = "";
+            const div = document.createElement("div");
+            const p = document.createElement("p");
+        
+            p.textContent ="Type notes here...";
+
+            div.appendChild(p);
+            noteText.appendChild(div);
+        }
+
         if (this.selectedFolder) {
             //add the selected class to the button of the folder so it can be styled differently when selected
             this.selectedFile.filebtn.classList.add("selected");
+
+            document.getElementById("edit-note-btn").disabled = false;
+            document.getElementById("save-note-btn").disabled = false;
         }
     }
 
