@@ -4,7 +4,7 @@ async function loadAllFolders(manager) {
     const owners = ['Connor', 'Isabel', 'Cody'];
 
     for (const ownerName of owners) {
-        const response = await fetch('http://localhost:5000/api/folders/' + ownerName);
+        const response = await fetch('http://localhost:3000/api/folders/' + ownerName);
         const dbFolders = await response.json();
 
         let root = null;

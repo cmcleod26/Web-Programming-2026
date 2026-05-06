@@ -19,7 +19,7 @@ app.use('/api/folders', folderRoutes);
 const fileRoutes = require('./routes/fileRoutes');
 app.use('/api/files', fileRoutes);
 
-const PORT = process.env.PORT || 5000; //default value = 5000
+const PORT = process.env.PORT || 3000; //default value = 3000
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI).then(() => {
