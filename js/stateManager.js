@@ -1,4 +1,5 @@
 import setupAddFolder from "./CreateFolders.js";
+import setupDeleteFolder from "./DeleteFolders.js";
 import setupAddFile from "./createFile.js";
 import setupRoots from "./setupRoots.js";
 import loadAllFolders from "./loadFolders.js";
@@ -26,6 +27,9 @@ class stateManager {
 
         //addes the event lister to the create folder button
         setupAddFolder(this);
+
+        //adds the event listener to the delete folder button
+        setupDeleteFolder(this);
 
         //adds the event listener to the create file button and passes the manager to it.
         setupAddFile(this);
