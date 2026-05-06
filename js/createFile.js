@@ -1,4 +1,4 @@
-class FileItem {
+export class FileItem {
     constructor(fileName, folder, manager) {
         this.fileName = fileName;
         this.folder = folder;
@@ -28,7 +28,7 @@ class FileItem {
     }
 }
 
-function createFileHandler(event, manager) {
+async function createFileHandler(event, manager) {
     event.preventDefault();
     //Must select a folder before creating a file
     if (!manager.selectedFolder) {
@@ -41,12 +41,29 @@ function createFileHandler(event, manager) {
     
     //only create if they typed something;
     if (fileName !== '' && fileName) { 
+        const password = prompt('Enter password to save file:');
+
+        console.log("folder mongoId:", manager.selectedFolder.mongoId);
+        const response = await fetch('http://localhost:3000/api/files', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: fileName.trim(), folderId: manager.selectedFolder.mongoId, content: '', password: password })
+        });
+        const data = await response.json();
+
+        if (response.status !== 201) {
+            alert("Error: status " + response.status + " - " + data.message);
+            return;
+        }
         
         const newFile = new FileItem(fileName.trim(), manager.selectedFolder, manager);
         newFile.createFileInHTML();
+
+        newFile.mongoId = data._id;
         //manually set selected file on button creation
-        manager.setSelectedFile(newFile);
+
         manager.files.push(newFile);
+        //manager.setSelectedFile(newFile);
         manager.selectedFolder.files.push(newFile);
     }else{
         alert("Enter a name to create a file");
