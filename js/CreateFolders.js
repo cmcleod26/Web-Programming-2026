@@ -1,47 +1,6 @@
 import folder from "./Folder.js";
 
-<<<<<<< Updated upstream
 async function createFolderHandler(event, manager) {
-=======
-    constructor( PassedFolderName, Manager) {
-       this.folderName = PassedFolderName;
-       this.files = [];
-       this.manager = Manager
-       this.folderbtn = null;
-       this.folderDiv = null;
-       this.rootfolder = Manager.selectedRoot;
-    }
-    
-
-
-    createFolderInHTML(){
-        //creating folder div
-        const folderDiv = document.createElement('div');
-        folderDiv.className = 'folder' + this.folderName;
-        this.folderDiv = folderDiv
-        
-
-        //creating the button for the folder
-        this.folderbtn = document.createElement('button');
-        this.folderbtn.className = 'folder-btn';
-        this.folderbtn.innerText = this.folderName;
-        //add event listener to set slected folder when button is clicked
-        this.folderbtn.addEventListener('click', () => {
-            this.manager.setSelectedFolder(this);
-        })
-        //manually set selected folder on created just this once
-        this.manager.setSelectedFolder(this);
-
-        folderDiv.appendChild(this.folderbtn);
-
-        document.querySelector('#folders').appendChild(folderDiv);
-
-    }
-    
-}
-
-function createFolderHandler(event, manager) {
->>>>>>> Stashed changes
     event.preventDefault();
 
     if (!manager.selectedRoot) {
