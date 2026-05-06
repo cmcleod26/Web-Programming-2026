@@ -31,9 +31,10 @@ async function createFolderHandler(event, manager) {
 
         const newFolder = new folder(folderName, manager);
         newFolder.createFolderInHTML();
+        newFolder.mongoId = data._id;
         manager.folders.push(newFolder);
         manager.selectedRoot.folders.push(newFolder);
-        newFolder.mongoId = data._id;
+        manager.setSelectedFolder(newFolder);
 
     } else {
         alert("Enter a name to create a folder");

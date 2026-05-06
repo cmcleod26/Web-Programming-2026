@@ -21,8 +21,7 @@ class FileItem {
         this.filebtn.addEventListener("click", () => {
             this.manager.setSelectedFile(this);
         });
-        //manually set seleected file on creation
-        this.manager.setSelectedFile(this);
+        
 
         document.querySelector("#files").appendChild(fileDiv);
         fileDiv.appendChild(this.filebtn);
@@ -45,7 +44,8 @@ function createFileHandler(event, manager) {
         
         const newFile = new FileItem(fileName.trim(), manager.selectedFolder, manager);
         newFile.createFileInHTML();
-
+        //manually set selected file on button creation
+        manager.setSelectedFile(newFile);
         manager.files.push(newFile);
         manager.selectedFolder.files.push(newFile);
     }else{
