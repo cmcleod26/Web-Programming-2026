@@ -15,10 +15,7 @@ async function createFolderHandler(event, manager) {
 
         const password = prompt('Enter password to save folder:');
 
-        const newFolder = new folder(folderName, manager);
-        newFolder.createFolderInHTML();
-        manager.folders.push(newFolder);
-        manager.selectedRoot.folders.push(newFolder);
+        
 
         const response = await fetch('http://localhost:5000/api/folders', {
             method: 'POST',
@@ -26,6 +23,16 @@ async function createFolderHandler(event, manager) {
             body: JSON.stringify({ name: folderName, owner: manager.selectedRoot.rootName, password: password })
         });
         const data = await response.json();
+
+        if(response.status !== 200) {
+            alert("Incorrect password");
+            return;
+        }
+
+        const newFolder = new folder(folderName, manager);
+        newFolder.createFolderInHTML();
+        manager.folders.push(newFolder);
+        manager.selectedRoot.folders.push(newFolder);
         newFolder.mongoId = data._id;
 
     } else {
