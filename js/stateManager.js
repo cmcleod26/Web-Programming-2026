@@ -4,6 +4,7 @@ import setupRoots from "./setupRoots.js";
 import loadAllFolders from "./loadFolders.js";
 //import setupFolderToggles from "./js/toggleFolders.js";
 import setupNotepad from "./note.js";
+import loadFilesForFolder from "./loadFiles.js";
 
 
 class stateManager {
@@ -52,6 +53,11 @@ class stateManager {
         this.files.forEach(f => f.fileDiv.style.display = 'none');
         if (passedFolder) {
             passedFolder.files.forEach(f => f.fileDiv.style.display = 'block');
+        }
+
+        // Load files from database if not already loaded
+        if (passedFolder && passedFolder.files.length === 0) {
+            loadFilesForFolder(passedFolder, this);
         }
     }
 
