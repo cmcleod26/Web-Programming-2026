@@ -133,6 +133,11 @@ gap: 6px;
   cursor: pointer;
 }
 
+#root-folders button.selected {                                                        
+    background-color: #3b308a;
+    color: white;
+}
+
 #folders button {
   padding: 6px 10px;
   border: none;
@@ -142,6 +147,11 @@ gap: 6px;
   cursor: pointer;
 }
 
+#folders button.selected {                                                        
+    background-color: #3b308a;
+    color: white;
+}
+
 #files button {
   padding: 6px 10px;
   border: none;
@@ -149,6 +159,11 @@ gap: 6px;
   background-color: #7494eacd;
   text-decoration-color: black;  
   cursor: pointer; 
+}
+
+#files button.selected {                                                        
+    background-color: #3b308a;
+    color: white;
 }
 
 /* #note-pad button {
