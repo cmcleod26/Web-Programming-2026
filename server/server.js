@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 /*
@@ -12,9 +13,13 @@ this is how we define routes, middleware and start the server
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..')));
 
 const folderRoutes = require('./routes/folderRoutes');
 app.use('/api/folders', folderRoutes);
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 
 const fileRoutes = require('./routes/fileRoutes');
 app.use('/api/files', fileRoutes);
