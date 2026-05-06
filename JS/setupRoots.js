@@ -16,8 +16,9 @@ class RootFolder {
         this.rootbtn.className = 'root-btn';
         this.rootbtn.innerText = this.rootName;
         //add event listener to set selected root when button is clicked
-        this.rootbtn.addEventListener('click', () => {
+        this.rootbtn.addEventListener('click', async () => {
             this.manager.setSelectedRoot(this);
+            await this.manager.loadFoldersForRoot(this);
         });
 
         rootDiv.appendChild(this.rootbtn);
