@@ -16,10 +16,22 @@ async function deleteFolderHandler(event, manager) {
         body: JSON.stringify({ password: password })
     });
 
+    //check if wrong password
     if (response.status !== 201) {
         alert('Incorrect password');
         return;
     }
+
+    // remove all files belonging to this folder from the DOM and manager.files
+    const remainingFiles = [];
+    for (let i = 0; i < manager.files.length; i++) {
+        if (manager.files[i].folder === manager.selectedFolder) {
+            manager.files[i].fileDiv.remove();
+        } else {
+            remainingFiles.push(manager.files[i]);
+        }
+    }
+    manager.files = remainingFiles;
 
     // remove the folder div from the DOM
     manager.selectedFolder.folderDiv.remove();
@@ -33,13 +45,16 @@ async function deleteFolderHandler(event, manager) {
     }
 
     // remove the folder from selectedRoot.folders by finding its mongoId
+    const remainingRootFolders = [];
     for (let i = 0; i < manager.selectedRoot.folders.length; i++) {
-        if (manager.selectedRoot.folders[i].mongoId === manager.selectedFolder.mongoId) {
-            manager.selectedRoot.folders.splice(i, 1);
-            break;
+        //iterate through and add all folders that dont match the deleted folder to the remainingRootFolders array
+        //then set selectedRoot.folders to remainingRootFolders at the end
+        if (manager.selectedRoot.folders[i].mongoId !== manager.selectedFolder.mongoId) {
+            remainingRootFolders.push(manager.selectedRoot.folders[i]);
         }
     }
 
+    manager.selectedRoot.folders = remainingRootFolders; 
     // clear the selected folder
     manager.selectedFolder = null;
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Folder = require('../models/FolderSchema')
+const Folder = require('../models/FolderSchema');
+const File = require('../models/FileSchema');
 
 // GET - read/retrieve data
 //POST - create new data
@@ -35,15 +36,20 @@ router.delete('/:id', async(req, res) =>{
     try {
         const { password } = req.body;
 
+        //check password from req body against env variable
         if (password !== process.env.COMMIT_PASSWORD){
             return res.status(401).json({message: 'Incorrect Password'});
         }
 
+        //delete folder by id incase of duplicate names
         const folder = await Folder.findByIdAndDelete(req.params.id);
 
         if(!folder){
             return res.status(404).json({message: 'Folder not found'});
         }
+
+        // delete all files that belong to this folder
+        await File.deleteMany({ folderId: req.params.id });
 
         res.status(201).json({message: 'Folder deleted'});
     } catch (error) {
