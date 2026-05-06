@@ -107,21 +107,6 @@ class stateManager {
         this.files.forEach(f => f.fileDiv.style.display = 'none');
         this.selectedFolder = null;
     }
-<<<<<<< Updated upstream
-=======
-
-
-    // loading folders and files from database
-
-    async loadFoldersForRoot(root)
-    {
-        root.folders.forEach(f => f.folderDiv.remove());
-        root.folders = [];
-
-        this.files.forEeach(f => f.fileDiv.remove());
-        this.files = [];
-    }
->>>>>>> Stashed changes
 }
 
 new stateManager();
