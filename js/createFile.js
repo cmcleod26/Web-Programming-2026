@@ -49,7 +49,7 @@ async function createFileHandler(event, manager) {
         const response = await fetch('http://localhost:3000/api/files', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: fileName.trim(), folderId: manager.selectedFolder.mongoId, content: '', password: password })
+            body: JSON.stringify({ name: fileName.trim(), folderId: manager.selectedFolder.mongoId, content: '', password: password, owner: manager.selectedRoot.rootName })
         });
         const data = await response.json();
 

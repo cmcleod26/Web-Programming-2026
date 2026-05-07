@@ -20,7 +20,7 @@ router.get('/:owner', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const {name, owner, password} = req.body;
-        if (password !== process.env.COMMIT_PASSWORD){
+        if (password !== process.env[owner.toUpperCase() + '_PASSWORD']){
             return res.status(401).json({ message: 'Incorrect password'});
         }
         const folder = new Folder({name, owner});
@@ -34,10 +34,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async(req, res) =>{
     try {
-        const { password } = req.body;
+        const { password, owner } = req.body;
 
         //check password from req body against env variable
-        if (password !== process.env.COMMIT_PASSWORD){
+        if (password !== process.env[owner.toUpperCase() + '_PASSWORD']){
             return res.status(401).json({message: 'Incorrect Password'});
         }
 

@@ -13,7 +13,7 @@ async function deleteFolderHandler(event, manager) {
     const response = await fetch('http://localhost:3000/api/folders/' + manager.selectedFolder.mongoId, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: password })
+        body: JSON.stringify({ password: password, owner: manager.selectedRoot.rootName })
     });
 
     //check if wrong password

@@ -11,7 +11,7 @@ async function deleteFileHandler(event, manager) {
     const response = await fetch('http://localhost:3000/api/files/' + manager.selectedFile.mongoId, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: password })
+        body: JSON.stringify({ password: password, owner: manager.selectedRoot.rootName })
     });
 
     if (response.status !== 200) {

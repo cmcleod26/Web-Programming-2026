@@ -32,8 +32,8 @@ router.get('/:folderId', async (req, res) => {
 
 router.post('/', async(req, res) => {
     try {
-        const {name, folderId, content, password} = req.body;
-        if (password !== process.env.COMMIT_PASSWORD){
+        const {name, folderId, content, password, owner} = req.body;
+        if (password !== process.env[owner.toUpperCase() + '_PASSWORD']){
             return res.status(401).json({message: 'Incorrect Password'});
         }
         const file = new File({name, folderId, content});
@@ -48,8 +48,8 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
     try {
-        const {content, password} = req.body;
-        if(password !== process.env.COMMIT_PASSWORD){
+        const {content, password, owner} = req.body;
+        if(password !== process.env[owner.toUpperCase() + '_PASSWORD']){
             return res.status(401).json({message: 'Incorrect Password'});
         }
         const file = await File.findByIdAndUpdate(req.params.id, { $set: { content: content } }, {new:true});
@@ -64,8 +64,8 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req,res) => {
     try {
-        const {password} = req.body;
-        if(password !== process.env.COMMIT_PASSWORD){
+        const {password, owner} = req.body;
+        if(password !== process.env[owner.toUpperCase() + '_PASSWORD']){
             return res.status(401).json({message: 'Incorrect Password'});
         }
         const file = await File.findByIdAndDelete(req.params.id);

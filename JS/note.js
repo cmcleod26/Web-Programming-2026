@@ -68,7 +68,7 @@ function setupNotepad(manager) {
         const response = await fetch('/api/files/' + manager.selectedFile.mongoId,{                                                                            
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },                      
-          body: JSON.stringify({ content: content, password: password })
+          body: JSON.stringify({ content: content, password: password, owner: manager.selectedRoot.rootName })
         }); 
 
         //check if the response is not ok and alert the user if there was an error saving
