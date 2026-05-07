@@ -31,17 +31,22 @@ node server/server.js
 
 Then open `http://localhost:3000` in your browser.
 
+## Code structure
 
+```
+Web-Programming-2026/
+- index.html          the main page served by express
+- CSS/styles.css      all the styles for the app
+- js/                 all the frontend javascript
+- server/             the express backend
+  - server.js         starts the app and connects to mongodb
+  - routes/           api route handlers for folders and files
+  - models/           mongoose schemas for folders and files
+```
 
-Also, you will see a folder called node_modules. You can basically ignore this. This alongside .env will not be pushed to git
+the frontend lives entirely in js/ as js files
+stateManager.js is the center of it all it holds which root folder and files are selected and wires up all the other modules on page load
 
+when the page loads stateManager pulls all folders from the db for all three users and renders them hidden then shows them when a user clicks a root when a folder is clicked it fetches its files from the db when a file is clicked it fetches its content and shows it in the notepad
 
-1. Express - This is our server, it will handle incoming http requests like retrieving folders and such.
-
-We need to write handlers like app.get() and app.post() to define what happens for each request
-
-2. mongoose - This is the bridge to Mongo. Instead of queries we define a schema and a model which gives us methods to read and write data. This way instead of writing queries we can just write Folder.find()
-
-3. dotenv - this just makes it so that when the server starts it reads your .env file and loads everything into process.env. This way our code can handle sensitive information like the Mongo URI without us hardcoding them
-
-4. cors - "stands for Cross Origin Resource Sharing. Browsers have a security rule that blocks a webpage from making requests to a different domain than the one it came from. Since our frontend and backend are on the same its not needed but was when they werent andwere using live server.
+the backend is a simple express rest api in server/routes all write and delete routes check a per user password before doing anything to the db
