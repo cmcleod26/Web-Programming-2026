@@ -1,8 +1,8 @@
 async function loadFileContent(file) {
-    const response = await fetch('http://localhost:3000/api/files/' + file.mongoId);
+    const response = await fetch('http://localhost:3000/api/files/single/' + file.mongoId);
     const data = await response.json();
 
-    file.content = data.content || '';
+    file.content = data.content || 'Click Edit to start typing notes...';
 
     // clear old content and render new
     const noteText = document.getElementById('note-text');

@@ -7,6 +7,18 @@ const File = require('../models/FileSchema');
 // PUT - Update existing data
 // Delete - delete Data
 
+router.get('/single/:id', async (req, res) => {                               
+    try {       
+        const file = await File.findById(req.params.id);
+        if (!file) {
+            return res.status(404).json({ message: 'file not found' });       
+        }
+        res.status(200).json(file);                                           
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }                                                                         
+});
+
 router.get('/:folderId', async (req, res) => {
     try {
         const files = await File.find({ folderId: req.params.folderId});
@@ -15,6 +27,8 @@ router.get('/:folderId', async (req, res) => {
         res.status(500).json({message: error.message});
     }
 });
+
+
 
 router.post('/', async(req, res) => {
     try {
@@ -34,11 +48,11 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
     try {
-        const {name, content, password} = req.body;
+        const {content, password} = req.body;
         if(password !== process.env.COMMIT_PASSWORD){
             return res.status(401).json({message: 'Incorrect Password'});
         }
-        const file = await File.findByIdAndUpdate(req.params.id, { $set: { name: name, content: content } }, {new:true});
+        const file = await File.findByIdAndUpdate(req.params.id, { $set: { content: content } }, {new:true});
         if (!file){
             return res.status(404).json({message: 'file not found'});
         }

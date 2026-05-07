@@ -74,7 +74,8 @@ function setupNotepad(manager) {
         //check if the response is not ok and alert the user if there was an error saving
         if (response.status !== 200) {                                            
           const data = await response.json();           
-          alert('Error saving: ' + data.message);                               
+          alert('Error saving: ' + data.message);    
+                                     
         }
 
         //create new paragraphs in the note text for each paragraph in the text area

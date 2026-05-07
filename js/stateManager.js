@@ -62,6 +62,16 @@ class stateManager {
             passedFolder.files.forEach(f => f.fileDiv.style.display = 'block');
         }
 
+        this.setSelectedFile(null);
+
+        const noteText = document.getElementById('note-text');
+        noteText.innerHTML = '';                                                      
+        const div = document.createElement('div');
+        const p = document.createElement('p');
+        p.textContent = 'No File Selected';                                           
+        div.appendChild(p);
+        noteText.appendChild(div);
+
         // Load files from database if not already loaded
         if (passedFolder && passedFolder.files.length === 0) {
             loadFilesForFolder(passedFolder, this);
@@ -76,9 +86,11 @@ class stateManager {
         this.selectedFile = passedFile;
 
         // load content from DB and render into notepad
-        loadFileContent(passedFile);
+        if (this.selectedFile) {
+            loadFileContent(passedFile);
+        }
 
-        if (this.selectedFolder) {
+        if (this.selectedFolder && this.selectedFile) {
             //add the selected class to the button of the folder so it can be styled differently when selected
             this.selectedFile.filebtn.classList.add("selected");
 

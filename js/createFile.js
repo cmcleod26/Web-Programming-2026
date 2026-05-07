@@ -21,7 +21,7 @@ export class FileItem {
 
         this.filebtn.addEventListener("click", () => {
             this.manager.setSelectedFile(this);
-            
+
         });
         
 
@@ -66,7 +66,7 @@ async function createFileHandler(event, manager) {
         newFile.content = data.content;
 
         manager.files.push(newFile);
-        //manager.setSelectedFile(newFile);
+        manager.setSelectedFile(newFile);
         manager.selectedFolder.files.push(newFile);
     }else{
         alert("Enter a name to create a file");
