@@ -32,9 +32,9 @@ This file handles creating new folders inside the selected root folders
 - [ ] runs when the create folder button is clicked
 - [ ] checks if root folder is selected, asks user for folder name and then password
 - [ ] sends POST request to the backend to save
-- password is correct, the folder is saved and creates a new folder object
-- adds it to the selected folder list and makes it the selected folder
--[ ] if password is incorrect, an alert is sent
+- if password is correct, the folder is saved and creates a new folder object
+- adds it to the selected folder list and makes it the selected folder 
+- [ ] if password is incorrect, an alert is sent
 
 ### setupAddFolder(manager)
 - [ ] finds the #create-folder and stores it into the the createBtn
@@ -193,7 +193,7 @@ main control center of the program, calls all the setup functions
 - [ ] updates manager.selectedRoot
 - [ ] adds the styling to the newly selected root folder
 - [ ] hides all the folders related to the previous root
-- [ ] shpws only the folders related to the selected root folder
+- [ ] shows only the folders related to the selected root folder
 - also clears the selected folder
 ### new stateManager()
 starts the program by creating a new state manager object
@@ -237,6 +237,19 @@ contains the constructor and methods to toggle the folders or files section
 - [ ] calls the setup() method for both to create the event listeners
 
 ----------------------------------------
+## loadFileContent.js
+- [ ] loads and displays the content of the selected file
+
+### async loadFileContent(file)
+- [ ] sends a fetch request for the file using the mongoId and retireves the saved note content
+- [ ] stores the content in file.content
+- [ ] if the file has no saved content, out a default message "click edit to start typing notes..."
+- [ ] clears the old note content from #note-text
+- [ ] creates a new div, splits the file content into lines
+- [ ] creates a new p element so that the note displays correctly in the notepad area
+
+----------------------------------------
+
 # Server js files
 
 ## FileSchema.js
@@ -252,6 +265,10 @@ contains the constructor and methods to toggle the folders or files section
 
 ----------------------------------------
 ## folderRoutes.js
+
+
+----------------------------------------
+## server.js
 
 
 ----------------------------------------
