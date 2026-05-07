@@ -253,23 +253,48 @@ contains the constructor and methods to toggle the folders or files section
 # Server js files
 
 ## FileSchema.js
+defines what a file looks like in the database
 
+- name - the file name required
+- folderId - which folder it belongs to required
+- content - the note text defaults to empty string
+- createdAt and updatedAt - added automaticaly by mongoose timestamps
 
 ----------------------------------------
 ## FolderSchema.js
+defines what a folder looks like in the database
 
+- name - the folder name required
+- owner - which user it belongs to required
 
 ----------------------------------------
 ## fileRoutes.js
+handles all the api routes for files
 
+- GET /api/files/single/:id - returns one file by its id used to load note content
+- GET /api/files/:folderId - returns all files for a given folder
+- POST /api/files - creates a new file in the db checks password first
+- PUT /api/files/:id - updates the content of a file checks password first
+- DELETE /api/files/:id - deletes a file by id checks password first
 
 ----------------------------------------
 ## folderRoutes.js
+handles all the api routes for folders
 
+- GET /api/folders/:owner - returns all folders for a given owner from the db
+- POST /api/folders - creates a new folder in the db checks the owners password first
+- DELETE /api/folders/:id - deletes a folder by id and also deletes all files inside it checks password first
 
 ----------------------------------------
 ## server.js
+the entry point for the backend - starts the express app connects to mongodb and mounts all the routes
 
+- loads the env file so MONGO_URI and passwords are available
+- sets up cors and json parsing so the server can recieve requests
+- serves the frontend files statically so express handles the whole app
+- mounts folder routes at /api/folders and file routes at /api/files
+- connects to mongodb using the MONGO_URI from the env file
+- starts listening on port 3000 by default
 
 ----------------------------------------
 ----------------------------------------
