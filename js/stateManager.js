@@ -81,7 +81,7 @@ class stateManager {
             const div = document.createElement("div");
             const p = document.createElement("p");
         
-            p.textContent ="Type notes here...";
+            p.textContent ="Click Edit to start typing notes...";
 
             div.appendChild(p);
             noteText.appendChild(div);

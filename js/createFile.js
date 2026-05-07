@@ -3,6 +3,7 @@ export class FileItem {
         this.fileName = fileName;
         this.folder = folder;
         this.manager = manager;
+        this.content = '';
         this.filebtn = null;
         this.fileDiv = null;
         this.rootFolder = this.folder.rootFolder;
@@ -61,6 +62,7 @@ async function createFileHandler(event, manager) {
 
         newFile.mongoId = data._id;
         //manually set selected file on button creation
+        newFile.content = data.content;
 
         manager.files.push(newFile);
         //manager.setSelectedFile(newFile);

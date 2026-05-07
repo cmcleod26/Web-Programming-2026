@@ -55,8 +55,9 @@ async function deleteFolderHandler(event, manager) {
     }
 
     manager.selectedRoot.folders = remainingRootFolders; 
-    // clear the selected folder
-    manager.selectedFolder = null;
+    // clear the selected folder and file
+    manager.setSelectedFolder(null);
+    manager.setSelectedFile(null);
 }
 
 function setupDeleteFolder(manager) {

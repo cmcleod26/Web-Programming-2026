@@ -23,13 +23,19 @@ function setupNotepad(manager) {
 
         const paragraphs = noteText.querySelectorAll("p");
 
+        if(paragraphs[0].textContent === "Click Edit to start typing notes...") {
+            paragraphs[0].textContent = "";
+        }
+
+        
+
         let text = "";
 
         for( let i =0; i < paragraphs.length; i++) {
             text += paragraphs[i].textContent;
 
             if( i < paragraphs.length - 1) {
-                text += "|n";
+                text += "\n";
             }
         }
         noteArea.value = text;
@@ -65,6 +71,14 @@ function setupNotepad(manager) {
         noteEditor.style.display = 'none'; 
         editBtn.style.display = 'inline-block';
     });
+
+    const div = document.createElement("div");
+    const p = document.createElement("p");
+        
+    p.textContent ="No File Selected";
+
+    div.appendChild(p);
+    noteText.appendChild(div);
 }
 
 export default setupNotepad;
