@@ -287,6 +287,7 @@ handles all the api routes for folders
 
 ----------------------------------------
 ## server.js
+
 the entry point for the backend - starts the express app connects to mongodb and mounts all the routes
 
 - loads the env file so MONGO_URI and passwords are available
@@ -307,22 +308,27 @@ The code starts in index.html inside the <script type ="module"> tag, which is i
 - imports setupFolderToggles() from toggleFolders.js and calls it
 
 # stateManager called
-when stateManager is called it runs the constructor which starts up the whole sequence within the program, running in this order:
+when stateManager() is called it runs the constructor which starts up the main sequence of the program, running in this order:
 
 - setupRoots(this)
 - [ ] creates the Connor, Isabel, Cody root buttons in the DOM and adds click event listeners to each
+- [ ] clicking on a root button calls the setSelectedRoot()
 
 - loadAllFolders(this)
 - [ ] sends a fetch request to the backend and loads all the saved folders into the DOM
+- [ ] clicking on a folder button calls the setSelectedFolder()
 
 - setupAddFolder(this)
 - [ ] makes a click event listener to the create folder button
+- [ ] clicking the button calls createFolderHandler()
 
 - setupDeleteFolder(this)
 - [ ] makes a click event listener to the delete folder button
+- [ ] clicking the button calls deleteFolderHandler()
 
 - setupAddFile(this);
 - [ ] makes a click event listener to the create file button
+- [ ] clicking the button calls createFileHandler()
 
 - setupNotepad(this);
 - [ ] makes a click event listener to the edit note button and the save note button
@@ -334,6 +340,21 @@ when stateManager is called it runs the constructor which starts up the whole se
 
 - setupDeleteFile(this);
 - [ ] makes a click event listener to the delete file button
+- [ ] clicking the button calls deleteFileHandler()
+
+### file event listeners
+each file button has a click event listener, happening after a file is loaded  with loadAllFolders(), loadAllFiles, or a file is created with createFileHandler() or createFolderHandler()
+
+clicking a file calls setSelectedFile()
+- [ ] setSelectedFile() changes the file selected
+
+clicking a folder calls setSelectedFolder()
+- [ ] setSelectedFolder() changes the folder selected, and in turn changes the files that appear in the files tab, as different folders contain different files
+
+clicking a root folder calls setSelectedRoot()
+- [ ] setSelectedRoot() changes the root folder, this in turn changes the folders and files displayed in their respective tabs, as different ones are saved within the root
+
+
 
 ## after the constructor finished, we return to the <script> tag and the setupFolderToggles is called
 
