@@ -8,6 +8,7 @@ async function deleteFileHandler(event, manager) {
 
     const password = prompt('Enter password to delete file:');
 
+    // send delete to db
     const response = await fetch('http://localhost:3000/api/files/' + manager.selectedFile.mongoId, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -38,6 +39,7 @@ async function deleteFileHandler(event, manager) {
         }
     }
 
+    // clear selected file after deletion
     manager.selectedFile = null;
 }
 

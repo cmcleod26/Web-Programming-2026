@@ -1,3 +1,4 @@
+// root folder class for connor isabel and cody
 class RootFolder {
 
     constructor(rootName, manager) {

@@ -1,3 +1,4 @@
+// holds all the info for a single file
 export class FileItem {
     constructor(fileName, folder, manager) {
         this.fileName = fileName;
@@ -18,12 +19,12 @@ export class FileItem {
         this.filebtn.className = "file-btn";
         this.filebtn.innerText = this.fileName;
 
-
+        // clicking the file btn sets it as selected in the manager
         this.filebtn.addEventListener("click", () => {
             this.manager.setSelectedFile(this);
 
         });
-        
+
 
         document.querySelector("#files").appendChild(fileDiv);
         fileDiv.appendChild(this.filebtn);
@@ -40,11 +41,12 @@ async function createFileHandler(event, manager) {
 
     const fileName = prompt("Creating file in " + manager.selectedFolder.folderName + ". Enter file name:");
     fileName.trim();
-    
+
     //only create if they typed something;
-    if (fileName !== '' && fileName) { 
+    if (fileName !== '' && fileName) {
         const password = prompt('Enter password to save file:');
 
+        // post the new file to db with empty content
         console.log("folder mongoId:", manager.selectedFolder.mongoId);
         const response = await fetch('http://localhost:3000/api/files', {
             method: 'POST',
@@ -57,7 +59,8 @@ async function createFileHandler(event, manager) {
             alert("Error: status " + response.status + " - " + data.message);
             return;
         }
-        
+
+        // only build the file in the dom after db saves it
         const newFile = new FileItem(fileName.trim(), manager.selectedFolder, manager);
         newFile.createFileInHTML();
 

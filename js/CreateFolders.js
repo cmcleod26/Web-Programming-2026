@@ -15,8 +15,7 @@ async function createFolderHandler(event, manager) {
 
         const password = prompt('Enter password to save folder:');
 
-        
-
+        // post new folder to db
         const response = await fetch('http://localhost:3000/api/folders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -29,6 +28,7 @@ async function createFolderHandler(event, manager) {
             return;
         }
 
+        // only create in DOM after db confirms it saved
         const newFolder = new folder(folderName, manager);
         newFolder.createFolderInHTML();
         newFolder.mongoId = data._id;

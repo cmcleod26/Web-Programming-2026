@@ -15,6 +15,7 @@ function setupNotepad(manager) {
     document.getElementById("save-note-btn").disabled = false;
 
 
+    // edit btn grabs existing text and loads into textarea
     editBtn.addEventListener('click', () => {
         if(!manager.selectedFile) {
             alert("Select or create a file first");
@@ -23,6 +24,7 @@ function setupNotepad(manager) {
 
         const paragraphs = noteText.querySelectorAll("p");
 
+        // clear placeholdder text before loading into editor
         if(paragraphs[0].textContent === "Click Edit to start typing notes...") {
             paragraphs[0].textContent = "";
         }
@@ -44,6 +46,7 @@ function setupNotepad(manager) {
         editBtn.style.display = 'none';
     });
 
+    // save btn saves content to db and re renders the notepad
     saveBtn.addEventListener('click', async () => {
 
         if(!manager.selectedFile) {

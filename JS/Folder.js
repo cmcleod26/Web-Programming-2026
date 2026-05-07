@@ -1,3 +1,4 @@
+// folder class holds all the info for a single folder
 class folder {
 
     constructor(PassedFolderName, Manager) {
@@ -6,11 +7,13 @@ class folder {
         this.manager = Manager;
         this.folderbtn = null;
         this.folderDiv = null;
+        // set the root this folder belongs to
         this.rootfolder = Manager.selectedRoot;
         this.mongoId = null;
     }
 
     createFolderInHTML() {
+        // build the div and button then append to the folders column
         const folderDiv = document.createElement('div');
         folderDiv.className = 'folder' + this.folderName;
         this.folderDiv = folderDiv;

@@ -1,11 +1,13 @@
+/* global css variables so we can reuse colors and sizes easly */
 :root {
-  /* colors — two extra hex digits at the end set the opacity */
+
+  /* we went with pastel colors so the app looks lighter  */
   --color-toolbar:      #393E41;        /* FF = 100% */
   --color-root-folders: #FE5F5580;      /* BF = 75%  */
   --color-folders:      #7D80DA80;      /* 80 = 50%  */
   --color-files:        #7494EA80;      /* 40 = 25%  */
   --color-note-pad:     #F5F5F5;        /* 00 = 0%   */
-  
+
   /* column widths */
   --width-root-folders: 100px;
   --width-folders:      150px;
@@ -13,7 +15,7 @@
 
   /* note-pad border */
   --notepad-border-width: 3px;
-  --notepad-border-color: #EBEBEB; 
+  --notepad-border-color: #EBEBEB;
   --notepad-border-style: solid;
 
 
@@ -23,6 +25,7 @@
   --grid-gap:       8px;
 }
 
+/* reset default browser margin and padding on everything */
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +36,7 @@ body {
   height: 100vh;
 }
 
+/* main app container lays out all four columns in a row */
 #app {
   /* display: grid;
   grid-template-columns: var(--width-root-folders) var(--width-folders) var(--width-files) 1fr;
@@ -47,6 +51,7 @@ body {
   padding: var(--grid-gap);
 }
 
+/* toolbar across the top holds all the action buttons */
 #tool-bar {
   /* grid-column: 1 / -1; */
   display: flex;
@@ -63,13 +68,15 @@ body {
   align-items: center;
 }
 
+/* root folders column on the far left */
 #root-folders {
   width: var(--width-root-folders);
-  background-color: var(--color-root-folders); 
+  background-color: var(--color-root-folders);
   border-radius: var(--column-radius);
   padding: var(--column-padding);
 }
 
+/* folders column sits next to roots */
 #folders {
 
   width: var(--width-folders);
@@ -78,18 +85,20 @@ body {
   padding: var(--column-padding);
 }
 
+/* row layout for folder buttons and delete btn */
 #folderB {
 display: flex;
-flex-direction: row; 
+flex-direction: row;
 gap: 6px;
 }
 
 #file-btn {
 display: flex;
-flex-direction: column; 
+flex-direction: column;
 gap: 6px;
 }
 
+/* stack each btn vertically with a litle gap below */
 .root-btn {
     display: block;
     margin-bottom: 4px;
@@ -113,11 +122,13 @@ gap: 6px;
     margin-bottom: 10px;
 }
 
+
 #hide-folders-btn, #hide-files-btn, #show-folders-btn, #show-files-btn {
     background-color: #4a4a8a;
     color: white;
 }
 
+/* files column sits next to folders */
 #files {
 
 
@@ -129,6 +140,7 @@ gap: 6px;
 
 
 
+/* notepad takes up all remaining space on the right */
 #note-pad {
   flex: 1;
   background-color: var(--color-note-pad);
@@ -142,44 +154,50 @@ gap: 6px;
 
 /* BUTTONS */
 
+/* toolbar btns are a neutral gray */
 #tool-bar button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
   background-color: #73797d;
-  text-decoration-color: black;  
+  text-decoration-color: black;
   cursor: pointer;
-  
+
 }
 
+/* root btns match the pastel red of the column */
 #root-folders button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
   background-color: #ff675d80;;
-  text-decoration-color: black;  
+  text-decoration-color: black;
   cursor: pointer;
 }
 
-#root-folders button.selected {                                                        
+/* selected root turns dark purple so its easy to see whats active */
+#root-folders button.selected {
     background-color: #3b308a;
     color: white;
 }
 
+/* folder btns match the pastel purple of the column */
 #folders button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
   background-color: #7d80daca;
-  text-decoration-color: black;  
+  text-decoration-color: black;
   cursor: pointer;
 }
 
-#folders button.selected {                                                        
+/* selected folder turns dark purple same as roots for consistancy */
+#folders button.selected {
     background-color: #3b308a;
     color: white;
 }
 
+/* delete btns are red so its obvious they are destructive */
 #tool-bar #delete-folder {
     background-color: red;
 }
@@ -188,29 +206,23 @@ gap: 6px;
     background-color: red;
 }
 
+/* file btns match the pastel blue of the column */
 #files button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
   background-color: #7494eacd;
-  text-decoration-color: black;  
-  cursor: pointer; 
+  text-decoration-color: black;
+  cursor: pointer;
 }
 
-#files button.selected {                                                        
+/* selected file also turns dark purple to match the other columns */
+#files button.selected {
     background-color: #3b308a;
     color: white;
 }
 
-/* #note-pad button {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 1px;
-  background-color: #d0cdcd;
-  text-decoration-color: black;  
-  cursor: pointer;
-} */
-
+/* slight fade on hover for all btns */
 button:hover {
   opacity: 0.8;
 }

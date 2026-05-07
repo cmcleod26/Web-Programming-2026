@@ -9,6 +9,7 @@ import loadFilesForFolder from "./loadFiles.js";
 import loadFileContent from "./loadFileContent.js";
 import setupDeleteFile from "./DeleteFiles.js";
 
+// stateManager holds all selected state and wires up all the modules
 class stateManager {
     constructor() {
         this.roots = [];
@@ -64,11 +65,12 @@ class stateManager {
 
         this.setSelectedFile(null);
 
+        // reset notepad to no file selected when folder changes
         const noteText = document.getElementById('note-text');
-        noteText.innerHTML = '';                                                      
+        noteText.innerHTML = '';
         const div = document.createElement('div');
         const p = document.createElement('p');
-        p.textContent = 'No File Selected';                                           
+        p.textContent = 'No File Selected';
         div.appendChild(p);
         noteText.appendChild(div);
 
