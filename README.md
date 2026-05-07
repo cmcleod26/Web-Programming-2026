@@ -1,47 +1,36 @@
-## Project code for csc324 (Trifolio) .
--------------------------------------------------------------------------------------------------
-Updated: 3/24/2026
-## To Do
-### Backend
-- [ ] Test all API routes with Postman
-      
-### Frontend
-- [ ] Set up React app in client/ folder
-- [ ] Build root folder column (Connor, Cody, Isabel hardcoded)
-- [ ] Build folder column (fetches from GET /api/folders/:owner)
-- [ ] Build file column (fetches from GET /api/files/:folderId)
-- [ ] Build note pad (displays and edits file content)
-- [ ] Build commit button with password prompt
-- [ ] Connect all frontend actions to API routes
+# Trifolio
 
-### Hosting
-- [ ] Deploy Express backend to Render
-- [ ] Deploy React frontend to GitHub Pages
--------------------------------------------------------------------------------------------------
-# 3/24/2026
-API Examples: (We can also C+P these later)
-// get all folders for a user
-```ruby
-async function getFolders(owner) {
-      const response = await fetch(`http://localhost:5000/api/folders/${owner}`);
-      const folders = await response.json();
-      console.log(folders);
-      return folders;
-}
+## What is it
+
+Trifolio is a personal notes app. It has three hardcoded users Connor, Cody, and Isabel each with their own folders and files. You can create and delete folders and files, write notes in a notepad panel, and save everything to a MongoDB database. The UI is a three column layout users on the left, then folders, then files, with a notepad taking up the rest of the screen.
+
+Built with vanilla JavaScript on the frontend and an Express + MongoDB backend.
+
+## How to run
+
+**Requirements:**
+- Node.js installed
+- A `.env` file inside the root folder with the following:
 ```
--------------------------------------------------------------------------------------------------
-# 3/17/2026
-### added 4 packages
-to install these on your machine:
-First: make sure you have Node.js installed. You will be using npm which is the package manager.
+MONGO_URI=your_mongodb_connection_string
+CODY_PASSWORD=your_password
+CONNOR_PASSWORD=your_password
+ISABEL_PASSWORD=your_password
+and PORT=3000
+```
 
-Also you can run 'npm -v' to see if Node.js is installed
+**Install dependencies** (first time only):
+```
+npm install
+```
 
-Second: just run 'npm install', this will read teh package.json folder and install the correct stuff
+**Start the server:**
+```
+node server/server.js
+```
 
-(Just ignore package-lock.json) It's like boring package semantics I think
+Then open `http://localhost:3000` in your browser.
 
-It will say it installed 85 things, these are the 4 packages and their dependencies
 
 
 Also, you will see a folder called node_modules. You can basically ignore this. This alongside .env will not be pushed to git
@@ -55,5 +44,4 @@ We need to write handlers like app.get() and app.post() to define what happens f
 
 3. dotenv - this just makes it so that when the server starts it reads your .env file and loads everything into process.env. This way our code can handle sensitive information like the Mongo URI without us hardcoding them
 
-4. cors - ai explanation: "stands for Cross Origin Resource Sharing. Browsers have a security rule that blocks a webpage from making requests to a different domain than the one it came from. Since your React frontend and Express backend run on different ports locally, the browser would block their communication without this. cors tells the browser "this is allowed."
--------------------------------------------------------------------------------------------------
+4. cors - "stands for Cross Origin Resource Sharing. Browsers have a security rule that blocks a webpage from making requests to a different domain than the one it came from. Since our frontend and backend are on the same its not needed but was when they werent andwere using live server.
