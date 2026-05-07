@@ -276,3 +276,62 @@ contains the constructor and methods to toggle the folders or files section
 
 # control flow
 
+# index.html
+The code starts in index.html inside the <script type ="module"> tag, which is in the <head> This script tag runs before the body is rendered and does two things
+- imports the stateManager.js, which calls itself at the end of the file and creates a new stateManager()
+- imports setupFolderToggles() from toggleFolders.js and calls it
+
+# stateManager called
+when stateManager is called it runs the constructor which starts up the whole sequence within the program, running in this order:
+
+- setupRoots(this)
+- [ ] creates the Connor, Isabel, Cody root buttons in the DOM and adds click event listeners to each
+
+- loadAllFolders(this)
+- [ ] sends a fetch request to the backend and loads all the saved folders into the DOM
+
+- setupAddFolder(this)
+- [ ] makes a click event listener to the create folder button
+
+- setupDeleteFolder(this)
+- [ ] makes a click event listener to the delete folder button
+
+- setupAddFile(this);
+- [ ] makes a click event listener to the create file button
+
+- setupNotepad(this);
+- [ ] makes a click event listener to the edit note button and the save note button
+
+- edit button
+- [ ] located in the note.js, and allows for the note pad to be edited after a file has been made
+- save button
+- [ ] located in the note.js, pressed after the edit button and edits are made. Updates are saved to the notepad and the server
+
+- setupDeleteFile(this);
+- [ ] makes a click event listener to the delete file button
+
+## after the constructor finished, we return to the <script> tag and the setupFolderToggles is called
+
+# setupFolderToggles called
+when the setupFolderToggles is called, the setup() function is called
+
+- setup()
+- [ ] creates event listeners for both methods hide() and show()
+- [ ] creating two instances of the FolderToggle class
+- [ ]and then calls the updateButtons() method
+
+- updateButtons()
+- [ ] when this is called, it determines which buttons are to visible in the Folders and Files panel
+
+- hide()
+when an instance of the class is made, the hide button is given an event listener
+- [ ] present in the Folder and Files tab
+- [ ] hides necessary tabs if called
+- show()
+when an instance of the class is made, the show button is given an event listener
+- [ ] present in the Folder and Files tab
+- [ ] shows the selected tabs if called
+
+- updateLayout() 
+update layout is called after every event listener
+- [ ] updates the layout depending which button is clicked, resizing the root, folder, and files column accordingly
