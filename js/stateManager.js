@@ -6,7 +6,7 @@ import loadAllFolders from "./loadFolders.js";
 //import setupFolderToggles from "./js/toggleFolders.js";
 import setupNotepad from "./note.js";
 import loadFilesForFolder from "./loadFiles.js";
-
+import setupDeleteFile from "./DeleteFiles.js";
 
 class stateManager {
     constructor() {
@@ -38,6 +38,8 @@ class stateManager {
         // setupFolderToggles();
 
         setupNotepad(this);
+
+        setupDeleteFile(this);
     }
 
     setSelectedFolder(passedFolder) {
