@@ -69,16 +69,16 @@ function setupNotepad(manager) {
         
         //send a put request to the backend to update the content of the file in the database using the mongoId of the file and the password provided by the user
         const response = await fetch('/api/files/' + manager.selectedFile.mongoId,{                                                                            
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },                      
-          body: JSON.stringify({ content: content, password: password, owner: manager.selectedRoot.rootName })
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },                      
+            body: JSON.stringify({ content: content, password: password, owner: manager.selectedRoot.rootName })
         }); 
 
         //check if the response is not ok and alert the user if there was an error saving
         if (response.status !== 200) {                                            
-          const data = await response.json();           
-          alert('Error saving: ' + data.message);    
-                                     
+            const data = await response.json();           
+            alert('Error saving: ' + data.message);    
+            return;
         }
 
         //create new paragraphs in the note text for each paragraph in the text area
@@ -95,11 +95,7 @@ function setupNotepad(manager) {
         editBtn.style.display = 'inline-block';
 
         manager.selectedFile.content = content;                                   
-                                                                                
-        
-                                                                             
-  
-        
+                                                  
     });
 
     const div = document.createElement("div");
