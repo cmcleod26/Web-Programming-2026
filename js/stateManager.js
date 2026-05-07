@@ -6,6 +6,7 @@ import loadAllFolders from "./loadFolders.js";
 //import setupFolderToggles from "./js/toggleFolders.js";
 import setupNotepad from "./note.js";
 import loadFilesForFolder from "./loadFiles.js";
+import loadFileContent from "./loadFileContent.js";
 import setupDeleteFile from "./DeleteFiles.js";
 
 class stateManager {
@@ -74,18 +75,8 @@ class stateManager {
 
         this.selectedFile = passedFile;
 
-        const noteText = document.getElementById("note-text");
-        if(noteText.textContent.includes("No File Selected")) {
-
-            noteText.textContent = "";
-            const div = document.createElement("div");
-            const p = document.createElement("p");
-        
-            p.textContent ="Click Edit to start typing notes...";
-
-            div.appendChild(p);
-            noteText.appendChild(div);
-        }
+        // load content from DB and render into notepad
+        loadFileContent(passedFile);
 
         if (this.selectedFolder) {
             //add the selected class to the button of the folder so it can be styled differently when selected

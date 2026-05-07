@@ -21,6 +21,7 @@ export class FileItem {
 
         this.filebtn.addEventListener("click", () => {
             this.manager.setSelectedFile(this);
+            
         });
         
 

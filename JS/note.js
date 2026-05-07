@@ -44,21 +44,40 @@ function setupNotepad(manager) {
         editBtn.style.display = 'none';
     });
 
-    saveBtn.addEventListener('click', () => {
+    saveBtn.addEventListener('click', async () => {
 
         if(!manager.selectedFile) {
             alert("Select or create a file first");
             return;
         }
-        
+        const password = prompt('Enter password to save:');
+
+        //split the text area value into an array of paragraphs
+        const newP = noteArea.value.split("\n");
+        const content = noteArea.value;
+
+        //remove all the old paragraphs from the note text
         const oldParagraph = noteText.querySelectorAll("div");
 
         for( let i = 0; i < oldParagraph.length; i++) {
             oldParagraph[i].remove();
         }
 
-        const newP = noteArea.value.split("\n");
+        
+        //send a put request to the backend to update the content of the file in the database using the mongoId of the file and the password provided by the user
+        const response = await fetch('/api/files/' + manager.selectedFile.mongoId,{                                                                            
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },                      
+          body: JSON.stringify({ content: content, password: password })
+        }); 
 
+        //check if the response is not ok and alert the user if there was an error saving
+        if (response.status !== 200) {                                            
+          const data = await response.json();           
+          alert('Error saving: ' + data.message);                               
+        }
+
+        //create new paragraphs in the note text for each paragraph in the text area
         for( let i = 0; i < newP.length; i++) { 
             const div = document.createElement("div");
             const p = document.createElement("p");
@@ -70,6 +89,13 @@ function setupNotepad(manager) {
         noteText.style.display = 'block';
         noteEditor.style.display = 'none'; 
         editBtn.style.display = 'inline-block';
+
+        manager.selectedFile.content = content;                                   
+                                                                                
+        
+                                                                             
+  
+        
     });
 
     const div = document.createElement("div");

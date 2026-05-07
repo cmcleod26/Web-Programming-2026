@@ -10,7 +10,7 @@ const File = require('../models/FileSchema');
 router.get('/:folderId', async (req, res) => {
     try {
         const files = await File.find({ folderId: req.params.folderId});
-        res.json(files);
+        res.status(200).json(files);
     } catch (error){
         res.status(500).json({message: error.message});
     }
