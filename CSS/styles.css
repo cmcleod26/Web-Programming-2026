@@ -90,6 +90,34 @@ flex-direction: column;
 gap: 6px;
 }
 
+.root-btn {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.folder-btn {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.file-btn {
+    display: block;
+    margin-bottom: 4px;
+}
+
+#folderB {
+    margin-bottom: 10px;
+}
+
+#files > button {
+    margin-bottom: 10px;
+}
+
+#hide-folders-btn, #hide-files-btn, #show-folders-btn, #show-files-btn {
+    background-color: #4a4a8a;
+    color: white;
+}
+
 #files {
 
 
